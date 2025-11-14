@@ -8,6 +8,7 @@ import org.jetbrains.dokka.gradle.DokkaTaskPartial
 plugins {
     id("com.vanniktech.maven.publish.base")
     id("org.jetbrains.dokka")
+    signing
 }
 
 fun getPublishVersion(): String {
@@ -34,3 +35,8 @@ tasks.withType<DokkaTaskPartial>().configureEach {
     }
 }
 
+signing {
+    setRequired {
+        !gradle.taskGraph.allTasks.any { it is PublishToMavenLocal }
+    }
+}

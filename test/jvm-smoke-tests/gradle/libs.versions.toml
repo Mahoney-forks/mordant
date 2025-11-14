@@ -1,0 +1,17 @@
+[versions]
+kotlin = "2.2.21"
+mordant = "3.0.2"
+
+[libraries]
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+
+mordant = { module = "com.github.ajalt.mordant:mordant", version.ref = "mordant" }
+
+kotest-bom = { module = "io.kotest:kotest-bom", version = "6.0.4" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core" }
+kotest-framework-engine = { module = "io.kotest:kotest-framework-engine" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
