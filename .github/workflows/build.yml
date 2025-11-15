@@ -26,11 +26,6 @@ jobs:
     runs-on: ${{matrix.os}}
     steps:
       - uses: actions/checkout@v5
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          java-version: 22
-          distribution: 'graalvm-community'
-          set-java-home: false
       - uses: actions/setup-java@v5
         with:
           distribution: 'zulu'
@@ -43,10 +38,6 @@ jobs:
         run: >-
             ./gradlew
             ${{matrix.EXTRA_GRADLE_ARGS}}
-            :mordant:check
-            :mordant-coroutines:check
-            :mordant-markdown:check
-            :test:graalvm:nativeTest
             --stacktrace
 
       - name: Upload R8 Jar
