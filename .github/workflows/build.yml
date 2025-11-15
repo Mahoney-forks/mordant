@@ -53,7 +53,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         uses: actions/upload-artifact@v5
         with:
-          name: main-r8.jar
+          name: main-r8-jar
           path: 'test/proguard/build/libs/main-r8.jar'
           retention-days: 1
 
@@ -79,12 +79,12 @@ jobs:
       - name: Download R8 Jar
         uses: actions/download-artifact@v6
         with:
-          name: main-r8.jar
-          path: main-r8.jar
+          name: main-r8-jar
+          path: artifacts
 
       - name: Run R8 Jar
         shell: 'script -q -e -c "bash {0}"'
-        run: java -jar main-r8.jar
+        run: java -jar artifacts/main-r8.jar
 
   publish-snapshot:
     needs: [test, test-jvm-compatibility]
