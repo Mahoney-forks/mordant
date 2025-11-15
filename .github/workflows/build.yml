@@ -82,7 +82,7 @@ jobs:
     steps:
       - uses: actions/setup-java@v5
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: ${{ matrix.java-version }}
       - name: Download R8 Jar
         uses: actions/download-artifact@v6
