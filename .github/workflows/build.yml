@@ -73,9 +73,19 @@ jobs:
           name: main-r8-jar
           path: artifacts
 
-      - name: Run R8 Jar
+      - name: Run R8 Jar without a tty without all-unnamed
+        run: java -jar artifacts/main-r8.jar
+
+      - name: Run R8 Jar without a tty with all-unnamed
+        run: java --enable-native-access=ALL-UNNAMED -jar artifacts/main-r8.jar
+
+      - name: Run R8 Jar with a tty without all-unnamed
         shell: 'script -q -e -c "bash {0}"'
         run: java -jar artifacts/main-r8.jar
+
+      - name: Run R8 Jar with a tty with all-unnamed
+        shell: 'script -q -e -c "bash {0}"'
+        run: java --enable-native-access=ALL-UNNAMED -jar artifacts/main-r8.jar
 
   publish-snapshot:
     needs: [test, test-jvm-compatibility]
