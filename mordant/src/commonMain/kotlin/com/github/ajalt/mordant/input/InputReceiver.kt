@@ -9,7 +9,9 @@ import com.github.ajalt.mordant.terminal.Terminal
 interface InputReceiver<T> {
     sealed class Status<out T> {
         companion object {
-            val Finished = Finished(Unit)
+            // A getter, as creating a subclass while initializing this class can deadlock on the
+            // JVM with another thread creating that subclass.
+            val Finished get() = Finished(Unit)
         }
 
         data object Continue : Status<Nothing>()

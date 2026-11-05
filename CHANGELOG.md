@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Fixed
+- Fixed a JVM deadlock when two threads used `InputReceiver.Status` for the first time at once, such as two interactive prompts.
+
 ## 3.1.1
 ### Fixed
 - Fixed progress bar animations leaving a stale frame when a task completes during a refresh. [(#302)](https://github.com/ajalt/mordant/issues/302)
